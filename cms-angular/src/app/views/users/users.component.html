@@ -1,0 +1,32 @@
+<div class="full">
+  <img
+    src="../../../assets/images/cms-background.jpeg"
+    alt="abstract background"
+    class="bg-img"
+  />
+  <div class="centered">
+    <div>
+      <label for="search">Search by name:</label>
+      <input type="text" name="search" id="search" [(ngModel)]="search" />
+    </div>
+    <h4>You're searching by: {{ search }}</h4>
+    <table>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>company</th>
+        <th>email</th>
+      </tr>
+      <tr *ngFor="let user of filteredUsers | filterUsers: search">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>
+          <a href="{{ user.website }}" target="_blank">{{
+            user.company.name
+          }}</a>
+        </td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </table>
+  </div>
+</div>
