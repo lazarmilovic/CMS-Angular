@@ -19,7 +19,9 @@
       </tr>
       <tr *ngFor="let user of filteredUsers | filterUsers: search">
         <td>{{ user.id }}</td>
-        <td>{{ user.name }}</td>
+        <td>
+          <a [routerLink]="['/users', user.id]">{{ user.name }}</a>
+        </td>
         <td>
           <a href="{{ user.website }}" target="_blank">{{
             user.company.name

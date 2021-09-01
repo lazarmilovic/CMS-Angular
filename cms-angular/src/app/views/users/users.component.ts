@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { IUsers } from 'src/app/models/users';
-import { Users } from '../services/users.service';
+import { Users } from '../../services/users.service';
 
 @Component({
   templateUrl: './users.component.html',
@@ -16,22 +16,6 @@ export class UsersComponent implements OnInit {
   filteredUsers: IUsers[] = [];
   constructor(private users: Users) {}
 
-  get listFilter() {
-    return this.search;
-  }
-
-  set listFilter(value: string) {
-    this.search = value;
-    console.log('value now is: ', value);
-    this.filteredUsers = this.performFilter(value);
-  }
-
-  performFilter(filteredBy: string): any {
-    filteredBy = filteredBy.toLocaleLowerCase();
-    return this.filteredUsers.filter((user: any) => {
-      user.name.toLocaleLowerCase().includes(filteredBy);
-    });
-  }
   ngOnInit(): void {
     const result = this.users.getUsers().subscribe({
       next: (usersList) => {
