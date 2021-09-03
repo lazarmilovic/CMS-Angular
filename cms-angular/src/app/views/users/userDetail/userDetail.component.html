@@ -1,0 +1,22 @@
+<div class="full">
+  <img
+    src="../../../assets/images/cms-background.jpeg"
+    alt="abstract background"
+    class="bg-img"
+  />
+  <div class="centered thick-border">
+    <ng-container *ngIf="!errorMessage; else noUser">
+      <ng-container *ngIf="user$ | async as user">
+        <p>id: {{ user.id }}</p>
+        <p>name: {{ user.name }}</p>
+        <p>username: {{ user.username }}</p>
+        <p>phone: {{ user.phone }}</p>
+      </ng-container>
+    </ng-container>
+    <button routerLink="../">Go back</button>
+  </div>
+</div>
+<ng-template #noUser>
+  <h2>No User Found!</h2>
+  <p>{{ errorMessage }}</p>
+</ng-template>
