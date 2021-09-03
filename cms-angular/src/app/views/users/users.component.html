@@ -17,18 +17,20 @@
         <th>company</th>
         <th>email</th>
       </tr>
-      <tr *ngFor="let user of filteredUsers | filterUsers: search">
-        <td>{{ user.id }}</td>
-        <td>
-          <a [routerLink]="['/users', user.id]">{{ user.name }}</a>
-        </td>
-        <td>
-          <a href="{{ user.website }}" target="_blank">{{
-            user.company.name
-          }}</a>
-        </td>
-        <td>{{ user.email }}</td>
-      </tr>
+      <ng-container *ngIf="usersList | async as users">
+        <tr *ngFor="let user of users | filterUsers: search">
+          <td>{{ user.id }}</td>
+          <td>
+            <a [routerLink]="['/users', user.id]">{{ user.name }}</a>
+          </td>
+          <td>
+            <a [href]="'//' + user.website" target="_blank">{{
+              user.company.name
+              }}</a>
+          </td>
+          <td>{{ user.email }}</td>
+        </tr>
+      </ng-container>
     </table>
   </div>
 </div>

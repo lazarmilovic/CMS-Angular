@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { UsersComponent } from './users.component';
 import { FilterUsersPipe } from '../../shared/filterUsers.pipe';
-import { RouterModule } from '@angular/router';
+import { UserDetailComponent } from './userDetail/userDetail.component';
+import { UsersRoutingModule } from './users-routing.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [UsersComponent, FilterUsersPipe],
-  exports: [UsersComponent],
-  imports: [BrowserModule, ReactiveFormsModule, FormsModule, RouterModule],
-  bootstrap: [UsersComponent],
+  declarations: [UsersComponent, FilterUsersPipe, UserDetailComponent],
+  imports: [FormsModule, UsersRoutingModule, CommonModule],
 })
 export class UsersModule {}
